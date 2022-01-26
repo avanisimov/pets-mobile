@@ -1,0 +1,21 @@
+pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "pets-mobile"
+
+include(":androidApp")
+
+include(":core-android-ui-kit")
+include(":feature-login-android")
+include(":feature-login-shared")
+
+//include(":shared")
+//
+//include(":feature-login-android")
+//include(":feature-login-shared")
+
