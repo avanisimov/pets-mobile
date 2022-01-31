@@ -24,7 +24,7 @@ fun LoginScreen(
     navController: NavController,
     viewModel: LoginViewModel
 ) {
-    val listItems :List<LoginMessageVO> by viewModel.items.collectAsState(emptyList())
+    val listItems: List<LoginMessageVO> by viewModel.items.collectAsState(emptyList())
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -76,9 +76,9 @@ fun LoginScreen(
                         Text(
                             text = message.text, color = MaterialTheme.colors.onPrimary
                         )
-                        message.image?.let { resourceId ->
+                        message.image?.let { image ->
                             Image(
-                                painter = painterResource(R.drawable.friends_search_example),
+                                painter = image.painter(),
                                 contentDescription = null
                             )
                         }

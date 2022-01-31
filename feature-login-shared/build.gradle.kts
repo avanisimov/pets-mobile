@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
@@ -25,6 +26,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${findProperty("version.kotlinx.coroutines")}")
+                api("dev.icerock.moko:resources:0.18.0")
             }
         }
         val commonTest by getting {
@@ -36,6 +38,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 api("com.google.firebase:firebase-auth-ktx:21.0.1")
+                api("dev.icerock.moko:resources-compose:0.18.0")
             }
         }
         val androidTest by getting {
@@ -47,7 +50,12 @@ kotlin {
         val iosMain by getting
         val iosTest by getting
     }
+    multiplatformResources{
+        multiplatformResourcesPackage = "ru.alira.pets"
+    }
 }
+
+
 
 android {
     compileSdk = 31

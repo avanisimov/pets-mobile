@@ -1,3 +1,9 @@
 package ru.alira.pets.login.ui
 
-expect class ImageVO()
+import dev.icerock.moko.resources.ImageResource
+
+sealed class ImageVO {
+    data class Resource(
+        val res: ImageResource
+    ):ImageVO()
+}
