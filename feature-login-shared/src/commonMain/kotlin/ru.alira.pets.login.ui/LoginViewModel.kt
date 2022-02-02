@@ -1,19 +1,18 @@
 package ru.alira.pets.login.ui
 
-import dev.icerock.moko.resources.ImageResource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.getAndUpdate
 import kotlinx.coroutines.launch
-import ru.alira.pets.MR
+import ru.alira.pets.core.CFlow
+import ru.alira.pets.core.wrap
 import ru.alira.pets.login.domain.uc.GetLoginHistoryUseCase
 
 interface LoginViewModel {
-    val loading: Flow<Boolean>
-    val items: Flow<List<LoginMessageVO>>
+    val loading: CFlow<Boolean>
+    val items: CFlow<List<LoginMessageVO>>
     fun onAnswer()
 }
 
@@ -21,9 +20,11 @@ class LoginViewModelImpl constructor(
     private val getLoginHistoryUseCase: GetLoginHistoryUseCase
 ) : LoginViewModel {
 
-    override val loading = MutableStateFlow(false)
+    val _loading = MutableStateFlow(false)
+    val _items = MutableStateFlow<List<LoginMessageVO>>(emptyList())
 
-    override val items = MutableStateFlow<List<LoginMessageVO>>(emptyList())
+    override val loading: CFlow<Boolean> = _loading.wrap()
+    override val items: CFlow<List<LoginMessageVO>> = _items.wrap()
 
     override fun onAnswer() {
 
@@ -34,11 +35,11 @@ class LoginViewModelImpl constructor(
 
     init {
         viewModelScope.launch {
-            loading.emit(true)
+            _loading.emit(true)
             val messages = getLoginHistoryUseCase()
-            loading.emit(false)
+            _loading.emit(false)
             messages.forEach { message ->
-                items.getAndUpdate { currentList ->
+                _items.getAndUpdate { currentList ->
                     currentList.toMutableList().apply {
                         add(0, message)
                     }
