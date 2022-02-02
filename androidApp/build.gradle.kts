@@ -16,7 +16,7 @@ repositories {
 //val composeVersion = findProperty("version.compose") as String
 dependencies {
     implementation(project(":core-android-ui-kit"))
-    implementation(project(":feature-login-android"))
+    implementation(project(":shared"))
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("com.google.android.material:material:1.5.0")
 

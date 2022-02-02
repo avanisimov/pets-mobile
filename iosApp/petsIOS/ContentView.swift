@@ -7,7 +7,7 @@
 
 import Combine
 import SwiftUI
-import login_shared
+import shared
 
 struct ContentView: View {
     var body: some View {
