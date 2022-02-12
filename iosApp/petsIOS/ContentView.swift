@@ -12,13 +12,13 @@ import shared
 struct ContentView: View {
     var body: some View {
         var uc = GetLoginHistoryUseCaseImpl()
-        var vm = LoginViewModelImpl(getLoginHistoryUseCase: uc)
+        var vm = LoginViewModelImpl(getLoginHistoryUseCase: uc, loginDataSource: LoginDataSourceImpl())
         
         ObservingView(publisher: asPublisher(vm.items)) { messages in
-
-            var objCArray = NSMutableArray(array: messages)
-            let swiftArray: [LoginMessageVO] = objCArray.compactMap({ $0 as? LoginMessageVO })
-
+            
+//            var objCArray = NSMutableArray(array: messages)
+//            let swiftArray: [LoginMessageVO] = objCArray.compactMap({ $0 as? LoginMessageVO })
+            let swiftArray:[LoginMessageVO] = messages.toArray()
             ZStack {
                 List(swiftArray, id: \.self) { message in
                     let isSystem = message.source == LoginMessageSource.system
@@ -29,6 +29,18 @@ struct ContentView: View {
             }
             
         }
+    }
+}
+
+extension NSArray {
+    
+    func toArray<T>() -> Array<T> {
+        var result = [T]()
+          self.forEach {
+              result.append($0 as! T)
+          }
+          return result
+
     }
 }
 

@@ -6,7 +6,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginAndroidViewModel @Inject constructor(
-    loginViewModel: LoginViewModel
+    private val loginViewModel: LoginViewModel
 ) : ViewModel(), LoginViewModel by loginViewModel {
 
+    override fun onCleared() {
+        super.onCleared()
+        loginViewModel.onCleared()
+    }
 }

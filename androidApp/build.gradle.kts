@@ -31,28 +31,13 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.5.0-alpha01")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    // Image
+    implementation("io.coil-kt:coil-compose:1.3.1")
+
     // Hilt
     implementation("com.google.dagger:hilt-android:2.40.5")
     kapt("com.google.dagger:hilt-android-compiler:2.40.5")
 
-//    implementation(project(":shared"))
-//    implementation(project(":feature-login-android"))
-//    implementation("com.google.android.material:material:1.4.0")
-//
-//    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-//
-//    implementation("androidx.compose.ui:ui:$composeVersion")
-//    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
-//    implementation("androidx.compose.foundation:foundation:$composeVersion")
-//    implementation("androidx.compose.material:material:$composeVersion")
-//    implementation("androidx.navigation:navigation-compose:2.4.0-rc01")
-//    // Coroutines
-//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
-////    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
-//    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.2.0")
-//    // Hilt
-//    implementation("com.google.dagger:hilt-android:2.38.1")
-//    kapt("com.google.dagger:hilt-compiler:2.38.1")
 }
 
 android {

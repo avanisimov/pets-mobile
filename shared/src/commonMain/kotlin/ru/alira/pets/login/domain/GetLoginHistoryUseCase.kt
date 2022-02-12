@@ -3,8 +3,8 @@ package ru.alira.pets.login.domain
 import kotlinx.coroutines.delay
 import ru.alira.pets.MR
 import ru.alira.pets.core.ui.ImageVO
-import ru.alira.pets.login.ui.LoginMessageSource
-import ru.alira.pets.login.ui.LoginMessageVO
+import ru.alira.pets.login.ui.vo.LoginMessageSource
+import ru.alira.pets.login.ui.vo.LoginMessageVO
 
 interface GetLoginHistoryUseCase {
     suspend operator fun invoke(): List<LoginMessageVO>
