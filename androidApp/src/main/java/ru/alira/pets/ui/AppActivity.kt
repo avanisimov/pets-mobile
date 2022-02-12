@@ -27,6 +27,9 @@ import ru.alira.pets.feed.ui.FeedScreen
 import ru.alira.pets.login.ui.LoginAndroidViewModel
 import ru.alira.pets.login.ui.LoginDestination
 import ru.alira.pets.login.ui.LoginScreen
+import ru.alira.pets.profile.ui.ProfileAndroidViewModel
+import ru.alira.pets.profile.ui.ProfileDestination
+import ru.alira.pets.profile.ui.ProfileScreen
 import ru.alira.pets.ui.theme.AppTheme
 import ru.alira.pets.ui.theme.Color
 
@@ -41,7 +44,7 @@ class AppActivity : AppCompatActivity() {
                 val navController = rememberNavController()
                 val navBackStackEntry = navController.currentBackStackEntryAsState()
                 val shouldShowBottombar = navBackStackEntry.value?.destination?.route in listOf(
-                    "Feed"
+                    "Feed", "Profile"
                 )
                 Scaffold(bottomBar = {
                     if (shouldShowBottombar) {
@@ -98,12 +101,15 @@ class AppActivity : AppCompatActivity() {
 fun Navigation(
     navController: NavHostController
 ) {
-    NavHost(navController, startDestination = FeedDestination.route) {
+    NavHost(navController, startDestination = ProfileDestination.route) {
         composable(LoginDestination.route) {
             LoginScreen(navController, hiltViewModel<LoginAndroidViewModel>())
         }
         composable(FeedDestination.route) {
             FeedScreen(navController, hiltViewModel<FeedAndroidViewModel>())
+        }
+        composable(ProfileDestination.route) {
+            ProfileScreen(navController, hiltViewModel<ProfileAndroidViewModel>())
         }
     }
 
