@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,7 +16,6 @@ import androidx.compose.ui.unit.dp
 import ru.alira.pets.core.ui.BaseError
 import ru.alira.pets.core.ui.DataState
 import ru.alira.pets.profile.ui.PetAvatarVO
-import ru.alira.pets.ui.theme.Color
 import ru.alira.pets.ui.util.painter
 import ru.alira.pets.ui.util.text
 
@@ -49,13 +49,14 @@ fun ProfileAvatarWidget(
                 )
                 Text(
                     text = state.data.name.text(),
-                    color = Color.White,
+                    style = MaterialTheme.typography.h6,
                     textAlign = TextAlign.Center,
+                    color = MaterialTheme.colors.onPrimary,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .height(48.dp)
                         .fillMaxWidth()
-                        .background(Color.Teal700),
+                        .background(MaterialTheme.colors.primary),
 
                     )
             }

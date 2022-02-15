@@ -24,7 +24,6 @@ fun FeedScreen(
             .fillMaxSize()
     ) {
         items(items) { feedItem ->
-            println("feedItem -> $feedItem")
             when (feedItem) {
                 is FeedItemVO -> {
                     Box {

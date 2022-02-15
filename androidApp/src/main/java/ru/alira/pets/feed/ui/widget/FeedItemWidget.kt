@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,7 +15,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import ru.alira.pets.feed.ui.vo.FeedItemVO
 import ru.alira.pets.ui.util.painter
 import ru.alira.pets.ui.util.text
@@ -44,19 +44,17 @@ fun FeedItemWidget(vo: FeedItemVO) {
             Column {
                 Text(
                     text = vo.author.name.text(),
-                    color = Color.Black,
+                    style = MaterialTheme.typography.subtitle1
                 )
                 Text(
                     text = vo.date.text(),
-                    color = Color.Black,
-                    fontSize = 10.sp,
+                    style = MaterialTheme.typography.subtitle2
                 )
             }
         }
         Text(
             text = vo.text.toString(context = LocalContext.current),
-            color = Color.Black,
-            fontSize = 12.sp,
+            style = MaterialTheme.typography.body1,
             maxLines = 3,
             overflow = TextOverflow.Ellipsis
         )
