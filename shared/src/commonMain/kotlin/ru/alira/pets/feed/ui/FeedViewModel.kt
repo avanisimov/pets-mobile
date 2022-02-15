@@ -1,15 +1,16 @@
 package ru.alira.pets.feed.ui
 
 import dev.icerock.moko.resources.desc.Raw
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import ru.alira.pets.core.ui.*
+import ru.alira.pets.core.util.CFlow
+import ru.alira.pets.core.util.wrap
 import ru.alira.pets.feed.ui.vo.FeedItemAuthorVO
 import ru.alira.pets.feed.ui.vo.FeedItemVO
 
 interface FeedViewModel : Clearable {
 
-    val items: Flow<List<ViewObject>>
+    val items: CFlow<List<ViewObject>>
 }
 
 class FeedViewModelImpl constructor(
@@ -18,7 +19,7 @@ class FeedViewModelImpl constructor(
 
     private val _feedItems = MutableStateFlow<List<ViewObject>>(emptyList())
 
-    override val items: Flow<List<ViewObject>> = _feedItems
+    override val items: CFlow<List<ViewObject>> = _feedItems.wrap()
 
     init {
         launch {

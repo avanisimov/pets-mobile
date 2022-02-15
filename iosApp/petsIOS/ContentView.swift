@@ -11,23 +11,27 @@ import shared
 
 struct ContentView: View {
     var body: some View {
-        var uc = GetLoginHistoryUseCaseImpl()
-        var vm = LoginViewModelImpl(getLoginHistoryUseCase: uc, loginDataSource: LoginDataSourceImpl())
-        
-        ObservingView(publisher: asPublisher(vm.items)) { messages in
-            
-//            var objCArray = NSMutableArray(array: messages)
-//            let swiftArray: [LoginMessageVO] = objCArray.compactMap({ $0 as? LoginMessageVO })
-            let swiftArray:[LoginMessageVO] = messages.toArray()
-            ZStack {
-                List(swiftArray, id: \.self) { message in
-                    let isSystem = message.source == LoginMessageSource.system
-                        Text(String(message.text))
-                           .frame(maxWidth: .infinity, alignment: isSystem ? .leading : .trailing)
-                           .scaleEffect(x: 1, y: -1, anchor: .center)
-                }.scaleEffect(x: 1, y: -1, anchor: .center)
-            }
-            
+        TabView {
+            FeedScreen()
+                .tabItem {
+                    Image(systemName: "list.bullet")
+                    Text("Feed")
+                }
+            Text("Map")
+                .tabItem {
+                    Image(systemName: "map")
+                    Text("Map")
+                }
+            Text("Chat")
+                .tabItem {
+                    Image(systemName: "message")
+                    Text("Chat")
+                }
+            Text("Profile")
+                .tabItem {
+                    Image(systemName: "person.crop.circle.fill")
+                    Text("Profile")
+                }
         }
     }
 }
@@ -97,3 +101,22 @@ public struct ObservingView<Observed, Content>: View where Content: View {
         return view
     }
 }
+
+//        var uc = GetLoginHistoryUseCaseImpl()
+//        var vm = LoginViewModelImpl(getLoginHistoryUseCase: uc, loginDataSource: LoginDataSourceImpl())
+//
+//        ObservingView(publisher: asPublisher(vm.items)) { messages in
+//
+////            var objCArray = NSMutableArray(array: messages)
+////            let swiftArray: [LoginMessageVO] = objCArray.compactMap({ $0 as? LoginMessageVO })
+//            let swiftArray:[LoginMessageVO] = messages.toArray()
+//            ZStack {
+//                List(swiftArray, id: \.self) { message in
+//                    let isSystem = message.source == LoginMessageSource.system
+//                        Text(String(message.text))
+//                           .frame(maxWidth: .infinity, alignment: isSystem ? .leading : .trailing)
+//                           .scaleEffect(x: 1, y: -1, anchor: .center)
+//                }.scaleEffect(x: 1, y: -1, anchor: .center)
+//            }
+//
+//        }
