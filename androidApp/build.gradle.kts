@@ -2,8 +2,8 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id ("kotlin-kapt")
-    id ("dagger.hilt.android.plugin")
-//    id ("com.google.gms.google-services")
+    id("dagger.hilt.android.plugin")
+    id("com.google.gms.google-services")
 }
 group = "ru.alira"
 version = "1.0-SNAPSHOT"
@@ -30,6 +30,8 @@ dependencies {
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("androidx.navigation:navigation-compose:2.5.0-alpha01")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("com.google.maps.android:maps-compose:1.0.0")
+    implementation("com.google.android.gms:play-services-maps:18.0.2")
 
     // Image
     implementation("io.coil-kt:coil-compose:1.3.1")

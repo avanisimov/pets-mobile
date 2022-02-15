@@ -11,6 +11,7 @@ import ru.alira.pets.feed.ui.FeedAndroidViewModel
 import ru.alira.pets.feed.ui.FeedScreen
 import ru.alira.pets.login.ui.LoginAndroidViewModel
 import ru.alira.pets.login.ui.LoginScreen
+import ru.alira.pets.map.MapScreen
 import ru.alira.pets.profile.ui.ProfileAndroidViewModel
 import ru.alira.pets.profile.ui.ProfileScreen
 
@@ -24,6 +25,9 @@ fun Navigation(
         }
         composable(Routes.Feed) {
             FeedScreen(navController, hiltViewModel<FeedAndroidViewModel>())
+        }
+        composable(Routes.Map) {
+            MapScreen(navController)
         }
         composable(Routes.Profile) {
             ProfileScreen(navController, hiltViewModel<ProfileAndroidViewModel>())

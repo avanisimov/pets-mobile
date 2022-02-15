@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "99571332455",
+    "project_id": "alira-pets",
+    "storage_bucket": "alira-pets.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99571332455:android:b175226e6e357203ea6bc2",
+        "android_client_info": {
+          "package_name": "ru.alira.pets.stg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "99571332455-36tibcrp841ato5lqfgmikd5v1oj0vn2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9mN4u2ZRLIxKjYXwrtcBHlma3hrckuN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "99571332455-36tibcrp841ato5lqfgmikd5v1oj0vn2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
